@@ -1,0 +1,13 @@
+.mensajeError {
+    color: red;
+    font-size: 0.9em;
+    display: none;
+}
+
+input.valido {
+    border-color: green;
+}
+
+input.error {
+    border-color: red;
+}
