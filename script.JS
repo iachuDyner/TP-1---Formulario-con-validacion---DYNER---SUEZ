@@ -1,6 +1,4 @@
-
-
-document.addEventListener("DOMContentLoaded", (A) => {
+document.addEventListener("DOMContentLoaded", () => {
     const formulario = document.getElementById('formularioRegistro');
     const nombreCompletoInput = document.getElementById('nombreCompleto');
     const emailInput = document.getElementById('email');
@@ -11,8 +9,10 @@ document.addEventListener("DOMContentLoaded", (A) => {
     const errorEmail = document.getElementById('errorEmail');
     const errorContrasena = document.getElementById('errorContrasena');
     const errorConfirmarContrasena = document.getElementById('errorConfirmarContrasena');
-    A.preventDefault(); 
-    
+
+    const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    const regexContrasena = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
+
     function mostrarError(input, mensaje) {
         const errorElemento = document.getElementById('error' + input.id.charAt(0).toUpperCase() + input.id.slice(1));
         errorElemento.textContent = mensaje;
@@ -37,16 +37,7 @@ document.addEventListener("DOMContentLoaded", (A) => {
         }
     });
 
-    const contrasenia = contraseniaInput.value
-    document.write(contrasenia)
-    if(contraseniaInput != contraComparar)
-    {
-        alert("La contraseña no coincide")
-    }
-
-
     emailInput.addEventListener('input', () => {
-        const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
         if (emailInput.value.trim() === '') {
             mostrarError(emailInput, 'El correo electrónico es obligatorio.');
         } else if (!regexEmail.test(emailInput.value.trim())) {
@@ -57,7 +48,6 @@ document.addEventListener("DOMContentLoaded", (A) => {
     });
 
     contrasenaInput.addEventListener('input', () => {
-        const regexContrasena = /^(?=.*[a-zA-Z])(?=.*\d).{8,}$/;
         if (contrasenaInput.value.trim() === '') {
             mostrarError(contrasenaInput, 'La contraseña es obligatoria.');
         } else if (!regexContrasena.test(contrasenaInput.value.trim())) {
@@ -75,15 +65,14 @@ document.addEventListener("DOMContentLoaded", (A) => {
         }
     });
 
-    // Validación al enviar el formulario
     formulario.addEventListener('submit', (e) => {
-        e.preventDefault(); // Evita el envío del formulario
+        e.preventDefault();
         let valido = true;
 
         if (nombreCompletoInput.value.trim().length < 3) {
             mostrarError(nombreCompletoInput, 'El nombre completo debe tener al menos 3 caracteres.');
             valido = false;
-        }
+        }   
         if (emailInput.value.trim() === '' || !regexEmail.test(emailInput.value.trim())) {
             mostrarError(emailInput, 'Ingrese un correo electrónico válido.');
             valido = false;
@@ -98,11 +87,9 @@ document.addEventListener("DOMContentLoaded", (A) => {
         }
 
         if (valido) {
-            // Aquí puedes agregar el código para enviar los datos al servidor
             alert('Formulario enviado con éxito');
             formulario.reset();
+            document.querySelectorAll('.valido').forEach(input => input.classList.remove('valido'));
         }
     });
-})
-
-
+});

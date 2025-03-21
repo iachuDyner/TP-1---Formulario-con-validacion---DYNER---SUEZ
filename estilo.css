@@ -1,3 +1,40 @@
+
+body {
+    background-color: #1e1e2f; 
+    color: white; 
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+form {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    padding-right: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+input:focus {
+    outline: none;
+    border-color: #00bcd4;
+    box-shadow: 0px 0px 5px #00bcd4;
+}
+
 .mensajeError {
     color: red;
     font-size: 0.9em;
@@ -11,3 +48,20 @@ input.valido {
 input.error {
     border-color: red;
 }
+
+button {
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #008ba3;
+}
+
+    
+
